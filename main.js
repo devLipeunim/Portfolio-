@@ -165,7 +165,7 @@ let swiperPortfolio = new Swiper(".portfolio_container", {
   },
   pagination: {
     el: ".swiper-pagination",
-    cliickable: true,
+    clickable: true,
   },
 });
 
@@ -177,45 +177,40 @@ let swiperTestimonial = new Swiper(".testimonial_container", {
 
   pagination: {
     el: ".swiper-pagination",
-    cliickable: true,
+    clickable: true,
     dynamicBullets: true,
   },
 
   breakpoints: {
     568: {
       slidesPerView: 2,
-    },
-  },
+    }
+  }
 });
 //  EmailJS
 const contactForm = document.getElementById("contact-form");
-const contactName = document.getElementById("contact-name").value;
-const contactEmail = document.getElementById("contact-email").value;
-const contactProject = document.getElementById("contact-project").value;
+const contactName = document.getElementById("contact-name");
+const contactEmail = document.getElementById("contact-email");
+const contactProject = document.getElementById("contact-project");
 const spinKit = document.getElementById("spinKit");
 const btn = document.getElementById("button");
+
 const sendEmail = (e) => {
-  e.preventDefault();
+  e.preventDefault()
 
   spinKit.classList.add("show-spinKit");
   btn.textContent = "Sending message....";
-  
-  var templateParams = {
-    user_name=contactName,
-    user_email=contactEmail,
-    user_project=contactProject
-  };
 
   // serviceID, templateID, #form, public key
   emailjs
     .sendForm(
       "service_jsrwxy9",
       "template_2rrz8ai",
-      "templateParams",
+      "#contact-form",
       "JKdfmiXMaJ0Vt98Vt"
     )
     .then(
-      (response) => {
+      () => {
         // Hide Spinner
         // spinKit.textContent = "Message sent successfully"
         spinKit.classList.remove("show-spinKit");
@@ -223,7 +218,7 @@ const sendEmail = (e) => {
         //remove
         setTimeout(() => {
           btn.textContent = "Send Message";
-        }, 5000);
+        }, 5000)
       },
       (error) => {
         alert("OOPS! Error occured...", error);
@@ -335,6 +330,8 @@ sr.reveal(
   `.qualification_container, .portfolio_container, .testimonial_container`,
   { delay: 600, origin: "bottom", interval: 100 }
 );
+sr.reveal(`.contact-left`, { origin: "left" });
+sr.reveal(`.contact-right`, { origin: "right" });
 
 // ===== The date that is placed at the footer =====
 const date = new Date();
