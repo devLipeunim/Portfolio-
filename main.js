@@ -204,7 +204,7 @@ const sendEmail = (e) => {
   emailjs
     .sendForm(
       "service_jsrwxy9",
-      "template_yptqswf",
+      "template_2rrz8ai",
       "#contact-form",
       "JKdfmiXMaJ0Vt98Vt"
     )
