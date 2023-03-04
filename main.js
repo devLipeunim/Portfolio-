@@ -187,29 +187,48 @@ let swiperTestimonial = new Swiper(".testimonial_container", {
     },
   },
 });
-
-emailjs.init("TsZbPDQpwp7E7Cc2Y");
+//  EmailJS
+const contactForm = document.getElementById("contact-form");
+const contactName = document.getElementById("contact-name");
+const contactEmail = document.getElementById("contact-email");
+const contactProject = document.getElementById("contact-project");
+const spinKit = document.getElementById("spinKit");
 const btn = document.getElementById("button");
+const sendEmail = (e) => {
+  e.preventDefault();
 
-document.getElementById("form").addEventListener("submit", function (event) {
-  event.preventDefault();
+  spinKit.classList.add("show-spinKit");
+  btn.textContent = "Sending message....";
 
-  btn.value = "Sending...";
+  // serviceID, templateID, #form, public key
+  emailjs
+    .sendForm(
+      "service_jsrwxy9",
+      "template_yptqswf",
+      "#contact-form",
+      "JKdfmiXMaJ0Vt98Vt"
+    )
+    .then(
+      () => {
+        // Hide Spinner
+        // spinKit.textContent = "Message sent successfully"
+        spinKit.classList.remove("show-spinKit");
+        btn.textContent = "Sent successfully!!";
+        //remove
+        setTimeout(() => {
+          btn.textContent = "Send Message";
+        }, 5000);
+      },
+      (error) => {
+        alert("OOPS! Error occured...", error);
+      }
+    );
 
-  const serviceID = "default_service";
-  const templateID = "template_0f4yi8b";
-
-  emailjs.sendForm(serviceID, templateID, this).then(
-    () => {
-      btn.value = "Send Email";
-      alert("Message Successfully Sent!");
-    },
-    (err) => {
-      btn.value = "Send Email";
-      alert("Error occur");
-    }
-  );
-});
+  contactName.value = "";
+  contactEmail.value = "";
+  contactProject.value = "";
+};
+contactForm.addEventListener("submit", sendEmail);
 
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const section = document.querySelectorAll("section[id]");
@@ -286,6 +305,28 @@ if (selectedTheme) {
     localStorage.setItem("selected-icon", getCurrentIcon());
   });
 }
+
+// SCROLL REVEAL ANIMATION
+const sr = ScrollReveal({
+  origin: 'top',
+  distance: '60px',
+  duration: '2500',
+  // reset: true  /*ANIMATION REPEAT*/
+})
+
+sr.reveal('.home_img')
+sr.reveal('.home_social')
+sr.reveal(`.home_data`, {delay: 600, origin: 'bottom', interval: 100})
+sr.reveal(`.home_scroll`, {delay: 600, origin: 'bottom', interval: 100})
+sr.reveal('.section_title')
+sr.reveal('.section_subtitle')
+sr.reveal(`.about_img`, {origin: 'left'})
+sr.reveal(`.about_data`, {origin: 'right'})
+sr.reveal(`.skills_content:nth-child(1)`, {origin: 'left'})
+sr.reveal(`.skills_content:nth-child(2)`, {origin: 'right'})
+sr.reveal(`.skills_content:nth-child(3)`, {origin: 'left'})
+sr.reveal(`.qualification_container, .portfolio_container, .testimonial_container`, {delay: 600, origin: 'bottom', interval: 100})
+
 
 // ===== The date that is placed at the footer =====
 const date = new Date();
