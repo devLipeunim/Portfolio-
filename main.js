@@ -189,9 +189,9 @@ let swiperTestimonial = new Swiper(".testimonial_container", {
 });
 //  EmailJS
 const contactForm = document.getElementById("contact-form");
-const contactName = document.getElementById("contact-name");
-const contactEmail = document.getElementById("contact-email");
-const contactProject = document.getElementById("contact-project");
+const contactName = document.getElementById("contact-name"). value;
+const contactEmail = document.getElementById("contact-email").value;
+const contactProject = document.getElementById("contact-project").value;
 const spinKit = document.getElementById("spinKit");
 const btn = document.getElementById("button");
 const sendEmail = (e) => {
@@ -199,17 +199,27 @@ const sendEmail = (e) => {
 
   spinKit.classList.add("show-spinKit");
   btn.textContent = "Sending message....";
+  
+  var templateParams = {
+
+    user_name=contactName,
+    user_email=contactEmail,
+    user_project=contactProject
+
+
+
+};
 
   // serviceID, templateID, #form, public key
   emailjs
     .sendForm(
       "service_jsrwxy9",
       "template_yptqswf",
-      "#contact-form",
+      "templateParams",
       "JKdfmiXMaJ0Vt98Vt"
     )
     .then(
-      () => {
+      (response) => {
         // Hide Spinner
         // spinKit.textContent = "Message sent successfully"
         spinKit.classList.remove("show-spinKit");
