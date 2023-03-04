@@ -204,7 +204,7 @@ const sendEmail = (e) => {
   emailjs
     .sendForm(
       "service_jsrwxy9",
-      "template_2rrz8ai",
+      "template_yptqswf",
       "#contact-form",
       "JKdfmiXMaJ0Vt98Vt"
     )
@@ -294,39 +294,41 @@ if (selectedTheme) {
   themeButton.classList[selectedIcon === "uil-moon" ? "add" : "remove"](
     iconTheme
   );
-
-  //activate / deactivate the theme manually with the button
-  themeButton.addEventListener("click", () => {
-    // add or remove the dark / icon theme
-    document.body.classList.toggle(darkTheme);
-    themeButton.classList.toggle(iconTheme);
-    // we save the theme and the current icon that the user chose
-    localStorage.setItem("selected-theme", getCurrentTheme());
-    localStorage.setItem("selected-icon", getCurrentIcon());
-  });
 }
+
+//activate / deactivate the theme manually with the button
+themeButton.addEventListener("click", () => {
+  // add or remove the dark / icon theme
+  document.body.classList.toggle(darkTheme);
+  themeButton.classList.toggle(iconTheme);
+  // we save the theme and the current icon that the user chose
+  localStorage.setItem("selected-theme", getCurrentTheme());
+  localStorage.setItem("selected-icon", getCurrentIcon());
+});
 
 // SCROLL REVEAL ANIMATION
 const sr = ScrollReveal({
-  origin: 'top',
-  distance: '60px',
-  duration: '2500',
+  origin: "top",
+  distance: "60px",
+  duration: "2500",
   // reset: true  /*ANIMATION REPEAT*/
-})
+});
 
-sr.reveal('.home_img')
-sr.reveal('.home_social')
-sr.reveal(`.home_data`, {delay: 600, origin: 'bottom', interval: 100})
-sr.reveal(`.home_scroll`, {delay: 600, origin: 'bottom', interval: 100})
-sr.reveal('.section_title')
-sr.reveal('.section_subtitle')
-sr.reveal(`.about_img`, {origin: 'left'})
-sr.reveal(`.about_data`, {origin: 'right'})
-sr.reveal(`.skills_content:nth-child(1)`, {origin: 'left'})
-sr.reveal(`.skills_content:nth-child(2)`, {origin: 'right'})
-sr.reveal(`.skills_content:nth-child(3)`, {origin: 'left'})
-sr.reveal(`.qualification_container, .portfolio_container, .testimonial_container`, {delay: 600, origin: 'bottom', interval: 100})
-
+sr.reveal(".home_img");
+sr.reveal(".home_social");
+sr.reveal(`.home_data`, { delay: 600, origin: "bottom", interval: 100 });
+sr.reveal(`.home_scroll`, { delay: 600, origin: "bottom", interval: 100 });
+sr.reveal(".section_title");
+sr.reveal(".section_subtitle");
+sr.reveal(`.about_img`, { origin: "left" });
+sr.reveal(`.about_data`, { origin: "right" });
+sr.reveal(`.skills_content:nth-child(1)`, { origin: "left" });
+sr.reveal(`.skills_content:nth-child(2)`, { origin: "right" });
+sr.reveal(`.skills_content:nth-child(3)`, { origin: "left" });
+sr.reveal(
+  `.qualification_container, .portfolio_container, .testimonial_container`,
+  { delay: 600, origin: "bottom", interval: 100 }
+);
 
 // ===== The date that is placed at the footer =====
 const date = new Date();
