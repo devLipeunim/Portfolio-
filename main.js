@@ -194,7 +194,7 @@ const contactEmail = document.getElementById("contact-email");
 const contactProject = document.getElementById("contact-project");
 const spinKit = document.getElementById("spinKit");
 const btn = document.getElementById("button");
-
+const jsConfetti = new JSConfetti();
 const sendEmail = (e) => {
   e.preventDefault()
 
@@ -214,6 +214,29 @@ const sendEmail = (e) => {
         // Hide Spinner
         // spinKit.textContent = "Message sent successfully"
         spinKit.classList.remove("show-spinKit");
+        jsConfetti.addConfetti({
+
+          confettiColors: [
+
+            "#6e57e0",
+
+            "#ff477e",
+
+            "#ff7096",
+
+            "#ff85a1",
+
+            "#fbb1bd",
+
+            "#f9bec7"
+
+          ],
+
+          confettiRadius: 6,
+
+          confettiNumber: 800,
+
+        }).then(() => jsConfetti.addConfetti())
         btn.textContent = "Sent successfully!!";
         //remove
         setTimeout(() => {
