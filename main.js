@@ -194,6 +194,7 @@ const contactEmail = document.getElementById("contact-email");
 const contactProject = document.getElementById("contact-project");
 const spinKit = document.getElementById("spinKit");
 const btn = document.getElementById("button");
+const canvas = document.querySelector("#confetti");
 const jsConfetti = new JSConfetti();
 const sendEmail = (e) => {
   e.preventDefault()
