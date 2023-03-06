@@ -184,8 +184,8 @@ let swiperTestimonial = new Swiper(".testimonial_container", {
   breakpoints: {
     568: {
       slidesPerView: 2,
-    }
-  }
+    },
+  },
 });
 //  EmailJS
 const contactForm = document.getElementById("contact-form");
@@ -194,10 +194,10 @@ const contactEmail = document.getElementById("contact-email");
 const contactProject = document.getElementById("contact-project");
 const spinKit = document.getElementById("spinKit");
 const btn = document.getElementById("button");
-const canvas = document.querySelector("#confetti");
-const jsConfetti = new JSConfetti();
+// const canvas = document.querySelector("#confetti");
+// const jsConfetti = new JSConfetti();
 const sendEmail = (e) => {
-  e.preventDefault()
+  e.preventDefault();
 
   spinKit.classList.add("show-spinKit");
   btn.textContent = "Sending message....";
@@ -215,34 +215,32 @@ const sendEmail = (e) => {
         // Hide Spinner
         // spinKit.textContent = "Message sent successfully"
         spinKit.classList.remove("show-spinKit");
-        jsConfetti.addConfetti({
+        // jsConfetti
+        //   .addConfetti({
+        //     confettiColors: [
+        //       "#6e57e0",
 
-          confettiColors: [
+        //       "#ff477e",
 
-            "#6e57e0",
+        //       "#ff7096",
 
-            "#ff477e",
+        //       "#ff85a1",
 
-            "#ff7096",
+        //       "#fbb1bd",
 
-            "#ff85a1",
+        //       "#f9bec7",
+        //     ],
 
-            "#fbb1bd",
+        //     confettiRadius: 6,
 
-            "#f9bec7"
-
-          ],
-
-          confettiRadius: 6,
-
-          confettiNumber: 800,
-
-        }).then(() => jsConfetti.addConfetti())
+        //     confettiNumber: 800,
+        //   })
+        //   .then(() => jsConfetti.addConfetti());
         btn.textContent = "Sent successfully!!";
         //remove
         setTimeout(() => {
           btn.textContent = "Send Message";
-        }, 5000)
+        }, 5000);
       },
       (error) => {
         alert("OOPS! Error occured...", error);
@@ -357,7 +355,8 @@ sr.reveal(
 sr.reveal(`.contact-left`, { origin: "left" });
 sr.reveal(`.contact-right`, { origin: "right" });
 
-// ===== The date that is placed at the footer =====
+
 const date = new Date();
 const cYear = date.getFullYear();
 document.querySelector(".year").innerHTML = cYear;
+// ===== The date that is placed at the footer ====
