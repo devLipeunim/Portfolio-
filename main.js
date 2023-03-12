@@ -200,7 +200,7 @@ const sendEmail = (e) => {
   e.preventDefault();
 
   spinKit.classList.add("show-spinKit");
-  btn.textContent = "Sending message....";
+  btn.textContent = "Sending message.... 🛫";
 
   // serviceID, templateID, #form, public key
   emailjs
@@ -236,14 +236,14 @@ const sendEmail = (e) => {
         //     confettiNumber: 800,
         //   })
         //   .then(() => jsConfetti.addConfetti());
-        btn.textContent = "Sent successfully!!";
+        btn.textContent = "Sent successfully! ✅";
         //remove
         setTimeout(() => {
           btn.textContent = "Send Message";
         }, 5000);
       },
       (error) => {
-        alert("OOPS! Error occured...", error);
+        alert("OOPS! Error occured... 🔴", error);
       }
     );
 
